@@ -7,8 +7,9 @@ Repository with automated tests in REST.
 This project contains:
 
 - Collection with test suite for the `/post` resource of the JsonPlaceHolder API
-
 - Script to run newman automatically on this collection
+
+This project also has docker files for creating docker images, and also runs the tests through github actions.
 
 ## prerequisites
 
