@@ -11,6 +11,8 @@ This project contains:
 
 This project also has docker files for creating docker images, and also runs the tests through github actions.
 
+> Note: I tried to put runs on Github Actions, but the tests were failing because the [Newman Action](https://github.com/marketplace/actions/newman-action) doesn't identify the content-type coming from the request. Probably if I had to use GtActions, I would bring this up for discussion with more developers. If no solution could be found, I would talk about using another tool.
+
 ## prerequisites
 
 - [Postman](https://www.postman.com/), to run the tests and edit them
