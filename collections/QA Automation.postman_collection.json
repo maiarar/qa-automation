@@ -1,0 +1,1447 @@
+{
+	"info": {
+		"_postman_id": "a8a772f9-f93c-4cfa-badd-eaf16140c599",
+		"name": "QA Automation",
+		"description": "# QA Automations\nRepository with automated tests in REST.\nFor more details, visit [Github Project](https://github.com/maiarar/qa-automation).\n\n## Note:\n- There are some comments in the scripts explaining reasons why the validations were made.\n- In the project there are tests of success and failure according to the behavior of the Json Place Holder API. If, for example, empty fields were not allowed in the API, the validations would be different.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST new 'posts'",
+			"item": [
+				{
+					"name": "success",
+					"item": [
+						{
+							"name": "001 with all fields",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomLoremWords}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomLoremText}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "002 with empty string in title",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", \"\");",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "003 with empty string in body",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", \"\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "004 with negative userId",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", 0-pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "005 with userId with zero value",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", 0);",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "006 with all fields empty or zeroed",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", 0);",
+											"pm.variables.set(\"title\", \"\");",
+											"pm.variables.set(\"body\", \"\");"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "007 without userId field",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "008 without title field",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "009 without body field",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "010 without all fields",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "011 with null value in userId field",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": null,\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "012 with null value in title field",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": null,\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "013 with null value in body field",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "014 with null value in all fields",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": null,\n    \"title\": null,\n    \"body\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "015 with big value in userId",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", _.random(1, 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999))",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "016 with big value in title",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var randomString = (length) => {",
+											"    let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'",
+											"    let result = ''",
+											"    for ( let i = 0; i < length; i++ ) {",
+											"        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length))",
+											"    }",
+											"    return result",
+											"}",
+											"",
+											"//a ideia seria, caso houvessem limites de tamanho de caracter, aconteceriam as validações aqui.",
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", randomString(100000));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomLoremText}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "017 with big value in body",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var randomString = (length) => {",
+											"    let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'",
+											"    let result = ''",
+											"    for ( let i = 0; i < length; i++ ) {",
+											"        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length))",
+											"    }",
+											"    return result",
+											"}",
+											"",
+											"//a ideia seria, caso houvessem limites de tamanho de caracter, validações aqui",
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomLoremWords}}\"));",
+											"pm.variables.set(\"body\", randomString(100000));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "018 with text value in userId field",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomLoremWords}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"{{userId}}\",\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "019 with big text value in userId",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var randomString = (length) => {",
+											"    let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'",
+											"    let result = ''",
+											"    for ( let i = 0; i < length; i++ ) {",
+											"        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length))",
+											"    }",
+											"    return result",
+											"}",
+											"",
+											"//a ideia seria, caso houvessem limites de tamanho de caracter, aconteceriam as validações aqui.",
+											"pm.variables.set(\"userId\", randomString(1000000));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomLoremText}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomLoremText}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"{{userId}}\",\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// a maioria do código de pre-request-script está dentro de cada uma das requisições ao invés daqui, pois mudei o valor dos campos para cada teste no POST. ",
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"let responseJson = pm.response.json();",
+									"let propertiesToCheck = ['userId', 'title', 'body']",
+									"",
+									"",
+									"pm.test(\"Header is of type application/json\", () => {",
+									"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"",
+									"// aqui, eu juntei todas as validações de API em um só teste. ",
+									"// mas, dependendo da integração (exemplo: a integração é com uma API que pode retornar 201 e uma mensagem de erro, ao invés de um statusCode de erro), eu quebraria em mais testes, e criaria mais requisições também.",
+									"pm.test(\"Response should be valid with status code 201\", function () {    ",
+									"    pm.response.to.have.status(201);",
+									"    pm.response.to.have.status(\"Created\");",
+									"",
+									"    pm.response.to.be.success;",
+									"    pm.response.to.not.be.error;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response should contain values relative to the user object created\", () => {",
+									"    for (let field in propertiesToCheck){ ",
+									"",
+									"        //essa verificação foi colocada porque em alguns testes não são enviados todos os campos",
+									"        if (responseJson.hasOwnProperty(field)) ",
+									"            pm.expect(responseJson[field]+'').to.eql(pm.variables.get(field)+'');",
+									"",
+									"    }",
+									"    pm.expect(responseJson.id).to.be.a(\"number\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "error",
+					"item": [
+						{
+							"name": "020 with invalid JSON",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomInt}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Header is present\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html; charset=utf-8');",
+											"});",
+											"",
+											"// status code 500 é algo ruim em qualquer contexto :( mas pela API retornar, considerei como \"válido\" nesse cenário de teste. mas apenas por essa razão.",
+											"pm.test(\"Response should be invalid with status code 500\", function () {    ",
+											"    pm.response.to.have.status(500);",
+											"    pm.response.to.have.status(\"Internal Server Error\");",
+											"",
+											"    pm.response.to.be.serverError;",
+											"    pm.response.to.be.error;",
+											"    pm.response.to.be.withBody;",
+											"});",
+											"",
+											"pm.test(\"Response body should contains indications of JSON Parse error\",() => {",
+											"  pm.expect(pm.response.text()).to.include(\"SyntaxError: Unexpected \");",
+											"  pm.expect(pm.response.text()).to.include(\"JSON.parse\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    {{$randomUUID}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "021 with invalid value in userId field",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"userId\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"title\", pm.variables.replaceIn(\"{{$randomCity}}\"));",
+											"pm.variables.set(\"body\", pm.variables.replaceIn(\"{{$randomStreetName}}\"));"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Header is present\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html; charset=utf-8');",
+											"});",
+											"",
+											"// status code 500 é algo ruim em qualquer contexto :( mas pela API retornar, considerei como \"válido\" nesse cenário de teste. mas apenas por essa razão.",
+											"pm.test(\"Response should be invalid with status code 500\", function () {    ",
+											"    pm.response.to.have.status(500);",
+											"    pm.response.to.have.status(\"Internal Server Error\");",
+											"",
+											"    pm.response.to.be.serverError;",
+											"    pm.response.to.be.error;",
+											"    pm.response.to.be.withBody;",
+											"});",
+											"",
+											"pm.test(\"Response body should contains indications of JSON Parse error\",() => {",
+											"  pm.expect(pm.response.text()).to.include(\"SyntaxError: Unexpected \");",
+											"  pm.expect(pm.response.text()).to.include(\"JSON.parse\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": {{userId}},\n    \"title\": \"{{title}}\",\n    \"body\": \"{{body}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "#### Resource\nhttps://jsonplaceholder.typicode.com/\n\n#### Requests\nRequests from this collection must:\n- Create posts\n- Validate that attributes are ok",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "GET posts",
+			"item": [
+				{
+					"name": "success",
+					"item": [
+						{
+							"name": "022 all posts",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseJson = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Response should contain 10 posts\", function () {",
+											"    responseJson.length == 10;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Each value in response must contain the fields of a user\", function () {",
+											"    responseJson.forEach(function (userObj) {",
+											"        pm.expect(userObj.id).to.be.a(\"number\");",
+											"        pm.expect(userObj.title).to.be.a(\"string\");",
+											"        pm.expect(userObj.body).to.be.a(\"string\");",
+											"    })",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/posts/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "023 one post",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseJson = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Response should return 1 post\", function () {",
+											"    responseJson.length == 1;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Values in response must contain the fields of a post\", function () {",
+											"    pm.expect(responseJson.id).to.be.a(\"number\");",
+											"    pm.expect(responseJson.title).to.be.a(\"string\");",
+											"    pm.expect(responseJson.body).to.be.a(\"string\");",
+											"});",
+											"",
+											"",
+											"// se meu POST fosse persistido no servidor, eu criaria testes para salvar pelo post primeiro, e em seguida faria o GET dos objetos criados - verificando se tudo foi processado e salvo corretamente",
+											"// seria possível também fazer um teste do fluxo principal do usuário"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/posts/{{postId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts",
+										"{{postId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// aqui, eu juntei todas as validações de API em um só teste. ",
+									"// mas, dependendo da integração, eu quebraria em mais testes, e criaria mais requisições também.",
+									"pm.test(\"Response should be valid with status code 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    pm.response.to.be.ok;",
+									"    pm.response.to.not.be.error;",
+									"    pm.response.to.be.withBody;",
+									"    pm.response.to.be.json;",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "error",
+					"item": [
+						{
+							"name": "023 one post with invalid postId",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let randomInteger = pm.variables.replaceIn(\"{{$randomInt}}\") + 1; // para o id não ser 1",
+											"pm.variables.set(\"randomInteger\", randomInteger);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseJson = pm.response.json();",
+											"",
+											"pm.test(\"Response should be valid with status code 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"",
+											"    pm.response.to.be.notFound;",
+											"    pm.response.to.be.error;",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response should return 1 post\", function () {",
+											"    responseJson.length == 1;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response should be empty\", function () {",
+											"    pm.expect(responseJson).to.be.empty",
+											"});",
+											"",
+											"",
+											"// se meu POST fosse persistido no servidor, eu criaria testes para salvar pelo post primeiro, e em seguida faria o GET dos objetos criados - verificando se tudo foi processado e salvo corretamente",
+											"// seria possível também fazer um teste do fluxo principal do usuário"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/posts/{{$randomInt}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"posts",
+										"{{$randomInt}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "#### Resource\nhttps://jsonplaceholder.typicode.com/\n\n#### Requests\nRequests from this collection must:\n- Return saved posts\n- Validate that the fields are correct",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Header is of type application/json\", () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');",
+							"});"
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// todas as requisições para essa API retornam um content-type, que possui como charset utf-8.",
+					"// por isso, essa validação está aqui.",
+					"pm.test(\"Header is ok\", () => {",
+					"  pm.response.to.have.header(\"Content-Type\");",
+					"  pm.expect(pm.response.headers.get('Content-Type')).contains('charset=utf-8');",
+					"});",
+					"",
+					"",
+					"//aqui, também simulei um possível requisito em relação ao tempo de resposta.",
+					"pm.test(\"Response time is less than 3 seconds\", () => {",
+					"  pm.expect(pm.response.responseTime).to.be.below(3000);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://jsonplaceholder.typicode.com"
+		},
+		{
+			"key": "postId",
+			"value": "1"
+		}
+	]
+}
