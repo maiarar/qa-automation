@@ -1,0 +1,23 @@
+{
+  "name": "qa-automation",
+  "version": "1.0.0",
+  "description": "Repository with automated tests in REST.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "newman": "^5.2.3"
+  },
+  "scripts": {
+    "test": "newman run collections/QAAutomation.postman_collection.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maiarar/qa-automation.git"
+  },
+  "author": "Maiara Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maiarar/qa-automation/issues"
+  },
+  "homepage": "https://github.com/maiarar/qa-automation#readme"
+}
