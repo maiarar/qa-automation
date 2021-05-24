@@ -1,3 +1,4 @@
+
 # qa-automation
 
 Repository with automated tests in REST.
@@ -11,5 +12,11 @@ This project contains:
 
 ## prerequisites
 
-- Postman, to run the tests and edit them
-- Node/npm, for running the tests from newman
+- [Postman](https://www.postman.com/), to run the tests and edit them
+- [Node](https://nodejs.org/en/)/[npm](https://www.npmjs.com/), for running the tests from newman
+- [Docker](https://www.docker.com/), if you want to create images/containers from the project files
+
+## executing
+
+- Clone the project
+- Run `npm run test` 😊
